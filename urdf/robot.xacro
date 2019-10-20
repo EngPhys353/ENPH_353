@@ -139,7 +139,7 @@
   <joint name="camera_joint" type="fixed">
     <axis xyz="0 0 0" />
    <!-- <origin xyz="${camera_link} 0 ${height3 - axel_offset*2}" rpy="0 0 0"/> -->
-    <origin xyz = "0 ${0.07+camera_link/2} 0" rpy = "0 0.78539 1.5708"/>
+    <origin xyz = "0 ${0.07+camera_link/2} 0" rpy = "0 0.52359877559 1.5708"/>
     <parent link="chassis"/>
     <child link="camera_link"/>
   </joint>
@@ -169,7 +169,6 @@
     </inertial>
   </link>
 
-
  <!-- camera -->
   <gazebo reference="camera_link">
     <sensor type="camera" name="camera1">
@@ -191,12 +190,12 @@
                That pixel's noise value is added to each of its color
                channels, which at that point lie in the range [0,1]. -->
           <mean>0.0</mean>
-          <stddev>0.007</stddev>
+          <stddev>0.00</stddev>
         </noise>
       </camera>
       <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
         <alwaysOn>true</alwaysOn>
-        <updateRate>0.01</updateRate>
+        <updateRate>100</updateRate>
         <cameraName>rrbot/camera1</cameraName>
         <imageTopicName>image_raw</imageTopicName>
         <cameraInfoTopicName>camera_info</cameraInfoTopicName>
